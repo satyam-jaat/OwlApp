@@ -1,0 +1,22 @@
+<!-- views/partials/header.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>owlApp</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <h1>0wlApp</h1>
+        <% if (typeof username !== 'undefined') { %>
+            <div class="user-info">
+                Welcome, <%= username %> |<form action="/chat?_method=DELETE" method="POST">
+                    <button style="font-size: 0.9rem; padding: 0px 10px; margin: 0; " type="submit">Clear_chat</button>
+                </form> | <a href="/logout">&nbsp; Logout</a>
+            </div>
+        <% } %>
+    </header>
+    <main>

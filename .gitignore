@@ -1,0 +1,11 @@
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Node
+node_modules/
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*

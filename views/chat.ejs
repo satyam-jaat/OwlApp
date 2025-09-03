@@ -1,0 +1,42 @@
+<!-- views/chat.ejs -->
+<%- include('partials/header') %>
+
+    <div class="main-container">
+        <div class="image">
+            <img src="/3d-female-character-working-desk-with-laptop.png" alt="">
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <% messages.forEach(function(message) { %>
+                    <div class="message <%= message.sender.username === username ? 'user-message' : 'other-message' %>">
+                        <span class="sender">
+                            <%= message.sender.username %>
+                        </span><br>
+                        <span class="content">
+                            <%= message.content %>
+                        </span><br>
+                        <span class="timestamp">
+                            <%= message.timestamp.toLocaleTimeString([], { hour: '2-digit' , minute: '2-digit' }) %>
+                        </span>
+                    </div>
+                    <% }); %>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+    <script>
+        // Initialize chat with user data
+        const username = '<%= username %>';
+        const userId = '<%= userId %>';
+        initChat(username, userId);
+    </script>
+    <%- include('partials/footer') %>

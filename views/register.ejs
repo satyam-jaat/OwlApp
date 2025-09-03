@@ -1,0 +1,41 @@
+<!-- views/register.ejs -->
+<%- include('partials/header') %>
+<div class="split-container">
+    <!-- Left Section with Image -->
+    <div class="image-section">
+        <img src="/5277588.jpg" alt="Login Illustration">
+    </div>
+    
+    <!-- Right Section (White Space) -->
+    <div class="white-section"></div>
+    <div class="auth-container">
+        <h2>Register</h2>
+        <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="pass">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>    
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+            </div>
+
+            <button class="register-btn" type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</div>
+<%- include('partials/footer') %>

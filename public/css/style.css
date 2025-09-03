@@ -1,0 +1,308 @@
+/* public/css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height:100vh;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #bee0f818;
+}
+
+main {
+    min-height: 80vh;
+}
+
+header {
+    background-color: #6f91f7;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    display: flex;
+}
+
+.user-info a {
+    color: #9fe4a2;
+    text-decoration: none;
+}
+
+.split-container {
+    display: flex;
+    position: relative;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    max-height: 86vh;
+    object-fit: cover;
+}
+
+.white-section {
+    width: 50%;
+    height: 90%;
+    background-color: rgb(237, 237, 237);
+}
+
+.auth-container {
+    position: absolute;
+    top: 45%;
+    left: 53.4%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.auth-container h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6f91f7;
+    box-shadow: 0 0 0 2px rgba(111, 145, 247, 0.2);
+}
+
+button.login-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #6f91f7;
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+button.login-btn:hover {
+    background-color: #5a7de2;
+}
+
+.error-message {
+    color: #e53935;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #666;
+}
+
+.auth-container a {
+    color: #6f91f7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .split-container {
+        flex-direction: column;
+    }
+    
+    .auth-container {
+        width: 85%;
+        max-width: 400px;
+    }
+}
+
+button {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #6f91f7;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #4874d9;
+}
+
+.login-btn{
+    margin-top: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.register-btn{
+    margin-top: 1.2rem;
+    margin-bottom:0.5rem;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #ffe6e6;
+    border: 1px solid red;
+    border-radius: 4px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img{
+    width: 30rem;
+    height: 30rem;
+}
+
+.chat-container {
+    width: 40%;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.181);
+    overflow: hidden;
+}
+
+.chat-messages {
+    height: 500px;
+    overflow-y: auto;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.message {
+    padding: 10px 16px;
+    margin: 8px 6px;
+    border-radius: 1.5rem;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.other-message {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.user-message {
+    background-color: #d3d3d3d8; /* Red background */
+    /* color: white; */
+    align-self: flex-end;
+    text-align: right;
+    margin-left: auto;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.timestamp {
+    font-size: 0.6rem;
+    color: #888;
+    text-align: right;
+    display: block;
+}
+
+.sender {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+
+.chat-input {
+    display: flex;
+    padding: 1rem;
+}
+
+#message-input {
+    flex: 1;
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    margin-right: 0.5rem;
+}
+
+#send-button {
+    width: auto;
+    padding: 0.5rem 1rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background-color:#9cb3f8;
+    color: white;
+}
+
+.pass {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pass input {
+    width: 95%;
+}

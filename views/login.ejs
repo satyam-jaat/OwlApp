@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+    <div class="split-container">
+        <!-- Left Section with Image -->
+        <div class="image-section">
+            <img src="/5277588.jpg" alt="Login Illustration">
+        </div>
+        
+        <!-- Right Section (White Space) -->
+        <div class="white-section"></div>
+        
+        <!-- Centered Login Container (Overlaps both sections) -->
+        <div class="auth-container">
+            <h2>Login</h2>
+            <div class="error-message" style="display: none;">Sample error message</div>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button class="login-btn" type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/register">Register here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to demonstrate error message display
+        document.addEventListener('DOMContentLoaded', function() {
+            // For demonstration purposes - show error message
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('error')) {
+                const errorDiv = document.querySelector('.error-message');
+                errorDiv.textContent = decodeURIComponent(urlParams.get('error'));
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+<%- include('partials/footer') %>
