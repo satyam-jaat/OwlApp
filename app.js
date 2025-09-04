@@ -49,6 +49,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', authRoutes);
 app.use('/', chatRoutes);
 
+app.get("/",(req, res) => {
+  res.redirect("/chat");
+});
+
 // Socket.io for real-time communication
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
