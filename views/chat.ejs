@@ -1,12 +1,27 @@
 <!-- views/chat.ejs -->
 <%- include('partials/header') %>
-
     <div class="main-container">
-        <div class="image">
-            <img src="/3d-female-character-working-desk-with-laptop.png" alt="">
+        <div class="users">
+            <h3>Users</h3>
+            <hr>
+            <% for(let user of allUsers) { if(user._id.toString() !==userId.toString()) { %>
+                <button onclick="joinPrivateRoom('<%= user._id %>', '<%= user.username %>')">
+                    <strong>
+                        <%= user.username %>
+                    </strong>
+                </button>
+                <% } } %>
         </div>
 
         <div class="chat-container">
+            <div class="chat-input1">
+                <h3 id="chat-with">Select a user to chat </h3>
+                <form id="delete-form" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button style="padding: 8px" type="submit">Clear chat</button>
+                </form>
+            </div>
+
             <div class="chat-messages" id="chat-messages">
                 <% messages.forEach(function(message) { %>
                     <div class="message <%= message.sender.username === username ? 'user-message' : 'other-message' %>">
@@ -27,6 +42,10 @@
                 <button id="send-button">Send</button>
             </div>
         </div>
+
+        <!-- <div class="image">
+            <img src="/25469816_digital_artist_male.jpg" alt="">
+        </div> -->
 
     </div>
 

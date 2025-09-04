@@ -3,6 +3,32 @@ let socket;
 let currentUser;
 let currentUserId;
 
+function joinPrivateRoom(otherUserId, otherUsername) {
+    document.getElementById("chat-with").innerText = "Chat with "+otherUsername;
+    
+    const roomId = [currentUserId, otherUserId].sort().join('_');
+    socket.emit('join-room', roomId);
+
+    // Clear old messages and load history via AJAX
+    fetch(`/chat/${roomId}`)
+        .then(res => res.json())
+        .then(data => {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+            data.messages.forEach(m => {
+                addMessageToChat(m.sender.username, m.content, m.timestamp);
+            });
+        });
+
+    // Store the active room
+    window.activeRoom = roomId;
+    window.activeUser = otherUsername;
+
+    const deleteForm = document.getElementById('delete-form');
+    deleteForm.action = `/chat/${roomId}?_method=DELETE`;
+}
+
+
 function initChat(username, userId) {
     currentUser = username;
     currentUserId = userId;
@@ -31,19 +57,17 @@ function sendMessage() {
     const messageInput = document.getElementById('message-input');
     const message = messageInput.value.trim();
     
-    if (message) {
-        // Emit message to server
+    if (message && window.activeRoom) {
         socket.emit('chat-message', {
             senderId: currentUserId,
             senderName: currentUser,
             message: message,
-            room: 'general'
+            room: window.activeRoom
         });
-        
-        // Clear input
         messageInput.value = '';
     }
 }
+
 
 // public/js/chat.js
 function addMessageToChat(sender, message, timestamp) {
@@ -60,7 +84,7 @@ function addMessageToChat(sender, message, timestamp) {
     
     const senderSpan = document.createElement('span');
     senderSpan.className = 'sender';
-    senderSpan.textContent = sender + ':';
+    senderSpan.textContent = sender ;
     
     // Add line break after sender (to match EJS structure)
     const br1 = document.createElement('br');

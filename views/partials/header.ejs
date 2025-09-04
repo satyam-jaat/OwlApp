@@ -13,9 +13,7 @@
         <h1>0wlApp</h1>
         <% if (typeof username !== 'undefined') { %>
             <div class="user-info">
-                Welcome, <%= username %> |<form action="/chat?_method=DELETE" method="POST">
-                    <button style="font-size: 0.9rem; padding: 0px 10px; margin: 0; " type="submit">Clear_chat</button>
-                </form> | <a href="/logout">&nbsp; Logout</a>
+                Welcome, <%= username %> | <a href="/logout">&nbsp; Logout</a>
             </div>
         <% } %>
     </header>
